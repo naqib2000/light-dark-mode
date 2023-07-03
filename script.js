@@ -6,6 +6,10 @@ const image2 = document.getElementById("image2");
 const image3 = document.getElementById("image3");
 const textBox = document.getElementById("text-box");
 
+// themes
+const DARK_THEME = "dark";
+const LIGHT_THEME = "light";
+
 // dark or light images
 function imageMode(color) {
   image1.src = `img/undraw_conceptual_idea_${color}.svg`;
@@ -25,18 +29,18 @@ function toggleLightDarkMode(isDark) {
   isDark
     ? toggleIcon.children[1].classList.replace("fa-sun", "fa-moon")
     : toggleIcon.children[1].classList.replace("fa-moon", "fa-sun");
-  isDark ? imageMode("dark") : imageMode("light");
+  isDark ? imageMode(DARK_THEME) : imageMode(LIGHT_THEME);
 }
 
 // switch theme dynamically
 function switchTheme(event) {
   if (event.target.checked) {
-    document.documentElement.setAttribute("data-theme", "dark");
-    localStorage.setItem("theme", "dark");
+    document.documentElement.setAttribute("data-theme", DARK_THEME);
+    localStorage.setItem("theme", DARK_THEME);
     toggleLightDarkMode(true);
   } else {
-    document.documentElement.setAttribute("data-theme", "light");
-    localStorage.setItem("theme", "light");
+    document.documentElement.setAttribute("data-theme", LIGHT_THEME);
+    localStorage.setItem("theme", LIGHT_THEME);
     toggleLightDarkMode(false);
   }
 }
